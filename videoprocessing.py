@@ -3,12 +3,12 @@ import numpy as np
 import os
 import matplotlib.pyplot as plt
 
-def extract_frames(video_file, save_to_folder, save_every_frame=60):
+def extract_frames(video_file, save_to_folder, save_every_frame=10, starting_frame=10):
     capture = cv2.VideoCapture(video_file)
     
     frame_name = 1
-    n_frame = 0
-    total_frames = capture.get(cv2.CAP_PROP_FRAME_COUNT)
+    n_frame = starting_frame
+    total_frames = capture.get(cv2.CAP_PROP_FRAME_COUNT) - starting_frame
     
     progress_bar = " " * 10 + '0%'
     progress = 0
